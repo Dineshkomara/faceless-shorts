@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "faceless-shorts"
+version = "0.2.0"
+description = "A local-first pipeline for researching, producing, reviewing, and publishing narrated videos."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Dinesh Komara" }]
+dependencies = []
+
+[project.scripts]
+faceless-dashboard = "faceless_shorts.web.server:main"
+faceless-topics = "faceless_shorts.topics.hunter:main"
+faceless-assets = "faceless_shorts.assets.library:main"
+faceless-queue = "faceless_shorts.publishing.queue:main"
+faceless-feedback = "faceless_shorts.feedback.loop:main"
+faceless-analytics = "faceless_shorts.analytics.youtube:main"
+faceless-model = "faceless_shorts.models.selector:main"
+faceless-mpt = "faceless_shorts.engines.money_printer_turbo:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"faceless_shorts.web" = ["templates/*.html", "static/*.css", "static/*.js"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]

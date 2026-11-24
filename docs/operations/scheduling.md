@@ -1,6 +1,6 @@
 # Scheduling
 
-The pipeline does not install a background service automatically. Schedule the repository's daily/run-daily.sh with the operating system scheduler you already use. The script reads the repository .env file, prevents overlapping runs, broadcasts only ready queued projects, then produces ahead for a later slot.
+The pipeline does not install a background service automatically. Schedule the repository's `daily/run-daily.sh` compatibility entry point with the operating system scheduler you already use. It dispatches into the packaged pipeline, reads the repository `.env` file, prevents overlapping runs, broadcasts only ready queued projects, then produces ahead for a later slot.
 
 Queue planning uses local system time. Set PUBLISH_SLOTS to comma-separated 24-hour clock hours (default 10,19). The OS scheduler is separate: configure it to invoke the runner at the time you want each queue check to occur. The two schedules should agree.
 

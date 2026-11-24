@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>🎬 Faceless Shorts Studio</title>
+<link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand"><span class="brand-mark">🎬</span><div><h1>Faceless Studio</h1><p>Video pipeline workspace</p></div></div>
+    <div class="nav-label">Workspace</div>
+    <nav aria-label="Main navigation">
+      <button data-tab="pipeline" class="active" title="Pipeline overview"><span class="nav-icon">⌁</span>Overview</button>
+      <button data-tab="projects" title="Generated projects and media"><span class="nav-icon">▧</span>Projects & media</button>
+      <button data-tab="trends" title="Research and choose topics"><span class="nav-icon">⌕</span>Topic research</button>
+      <div class="nav-label">Insights</div>
+      <button data-tab="performance" title="YouTube analytics"><span class="nav-icon">▥</span>Performance</button>
+      <button data-tab="ledger" title="Previously used topics"><span class="nav-icon">≡</span>Topic ledger</button>
+      <div class="nav-label">Operations</div>
+      <button data-tab="crafts" title="How the pipeline produces a video"><span class="nav-icon">◇</span>Production guide</button>
+      <button data-tab="logs" title="Live pipeline logs"><span class="nav-icon">▤</span>Live logs</button>
+    </nav>
+    <div class="sidebar-spacer"></div>
+    <div class="sidebar-status"><span class="sidebar-status-label">System status</span><div class="sidebar-status-row"><span>Pipeline</span><span id="state-pill" class="pill idle">Checking</span></div><span id="active-slot">Checking status…</span></div>
+  </aside>
+  <div class="workspace">
+    <header class="topbar">
+      <div class="page-copy"><span class="eyebrow">Video operations</span><h2 id="page-title">Overview</h2><p id="page-description">Monitor production, review staged videos, and see what needs attention.</p></div>
+      <div class="top-actions">
+        <details class="run-settings">
+          <summary>⚙ Run setup <small id="run-settings-summary">3D Cinema · Auto style · Upload enabled</small></summary>
+          <div class="run-settings-panel">
+            <label>Production engine<select id="engine-select" onchange="updateEngineControls()"><option value="3d" selected>Three.js 3D Cinema</option><option value="mpt">MoneyPrinterTurbo · stock footage</option></select></label>
+            <label>Visual style<select id="style-select" onchange="updateRunSettingsSummary()"><option value="auto" selected>Auto by channel</option><option value="engineering-explainer">Engineering Explainer · 3D direction</option><option value="tall-tale">Tall Tale · 3D storybook</option><option value="cinematic-what-if">Cinematic What If · 2D, English only</option></select></label>
+            <label class="dry-toggle"><input type="checkbox" id="dry-run-check" onchange="updateRunSettingsSummary()"> Dry run <small>Build without uploading</small></label>
+          </div>
+        </details>
+        <button id="run-en-btn" class="btn en" onclick="triggerRun('en')">▶ English</button>
+        <button id="run-te-btn" class="btn te" onclick="triggerRun('te')">▶ Telugu</button>
+        <button id="run-all-btn" class="btn primary" onclick="triggerRun('all')">▶ Both</button>
+        <button id="stop-btn" class="btn danger" onclick="stopPipeline()" disabled title="Stops active generation and upload workers">■ Stop</button>
+      </div>
+    </header>
+    <main id="app-content"></main>
+  </div>
+</div>
+
+<div id="modal" class="modal-backdrop" onclick="closeModal(event)">
+  <div class="modal-content" onclick="event.stopPropagation()">
+    <button class="close-btn" onclick="closeModal()">&times;</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
+<script defer src="/static/dashboard.js"></script>
+</body>
+</html>

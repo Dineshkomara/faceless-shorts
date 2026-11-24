@@ -27,6 +27,7 @@ dashboard/perf.json
 review/*.jpg
 
 # Generated episodes and output media
+/projects/
 /daily-[0-9]*/
 /samples/
 /brain-replay/
@@ -53,6 +54,9 @@ __pycache__/
 venv/
 .idea/
 .vscode/
+build/
+dist/
+*.egg-info/
 
 # Historical style experiments are available in the working copy but too large and unstable to ship.
 /.agents/skills/faceless-shorts/styles/archive/

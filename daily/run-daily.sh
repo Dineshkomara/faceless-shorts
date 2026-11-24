@@ -5,6 +5,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 DEFAULT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 if [ -f "$DEFAULT_ROOT/.env" ]; then set -a; . "$DEFAULT_ROOT/.env"; set +a; fi
 ROOT="${PIPELINE_ROOT:-$DEFAULT_ROOT}"
+PROJECTS_DIR="${PIPELINE_PROJECTS_DIR:-$ROOT/projects}"
 DIR="$ROOT/daily"
 SKILL="${SKILL_DIR:-$ROOT/.agents/skills/faceless-shorts}"
 if [ ! -d "$SKILL" ] && [ -d "$HOME/.config/opencode/skill/faceless-shorts" ]; then
@@ -16,7 +17,8 @@ if [ -z "$CLI" ] && [ -x "/Applications/OpenCode.app/Contents/Resources/opencode
   CLI="/Applications/OpenCode.app/Contents/Resources/opencode-cli"
 fi
 if [ -z "$CLI" ]; then echo "OpenCode CLI not found; set OPENCODE_CLI or install it." >&2; exit 127; fi
-export SKILL SKILL_DIR="$SKILL" PIPELINE_ROOT="$ROOT" OPENCODE_CLI="$CLI"
+mkdir -p "$PROJECTS_DIR"
+export SKILL SKILL_DIR="$SKILL" PIPELINE_ROOT="$ROOT" PIPELINE_PROJECTS_DIR="$PROJECTS_DIR" OPENCODE_CLI="$CLI"
 EN_CHANNEL_NAME="${EN_CHANNEL_NAME:-Curiography}"
 TE_CHANNEL_NAME="${TE_CHANNEL_NAME:-Asakthi}"
 LOG="$DIR/logs/$(date +%F).log"
@@ -47,7 +49,7 @@ EXTRA_INSTRUCTION=""
 if [ "$CHANNEL" = "en" ]; then
   EXTRA_INSTRUCTION="CHANNEL RESTRICTION: Execute ONLY the English channel ($EN_CHANNEL_NAME). Do NOT scaffold, script, or render the Telugu video in this run."
 elif [ "$CHANNEL" = "te" ]; then
-  EXTRA_INSTRUCTION="CHANNEL RESTRICTION: Execute ONLY the Telugu channel ($TE_CHANNEL_NAME, section 2b). Do NOT scaffold, script, or render the English video in this run. If $ROOT/daily/daily-$(date +%Y%m%d)-te is already uploaded or is a translated non-mythological video, scaffold a fresh project: $ROOT/daily/daily-$(date +%Y%m%d)b-te based strictly on python3 trend_hunter.py --channel te."
+  EXTRA_INSTRUCTION="CHANNEL RESTRICTION: Execute ONLY the Telugu channel ($TE_CHANNEL_NAME, section 2b). Do NOT scaffold, script, or render the English video in this run. If $PROJECTS_DIR/daily-$(date +%Y%m%d)-te is already uploaded or is a translated non-mythological video, scaffold a fresh project: $PROJECTS_DIR/daily-$(date +%Y%m%d)b-te based strictly on python3 trend_hunter.py --channel te."
 fi
 
 if [ -n "$TOPIC_OVERRIDE" ]; then
@@ -84,6 +86,7 @@ PRIVATE_CONTEXT=""
 if [ -f "$DIR/private.local.md" ]; then PRIVATE_CONTEXT=$(cat "$DIR/private.local.md"); fi
 EXTRA_INSTRUCTION="${EXTRA_INSTRUCTION}
 ${PRIVATE_CONTEXT}
+PROJECT STORAGE: Create and update video project directories only inside $PROJECTS_DIR. Keep source code and daily pipeline records in the repository's existing directories.
 SHARED PRODUCTION QUALITY STANDARD (MANDATORY FOR BOTH ENGLISH AND TELUGU; supersedes conflicting older camera, shot-count, dialogue, and audio instructions):
 ${QUALITY_STANDARD}
 

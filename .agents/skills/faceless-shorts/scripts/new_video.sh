@@ -1,6 +1,6 @@
 #!/bin/bash
 # Start a new video from a style's working example (engine + shots + script), so it renders straight away.
-#   bash new_video.sh <style> <short-name> [--dir <parent>]     → <pipeline-root>/<short-name>/
+#   bash new_video.sh <style> <short-name> [--dir <parent>]     → <pipeline-projects-dir>/<short-name>/
 #   bash new_video.sh --list                                    the styles
 set -eu
 SKILL="$(cd "$(dirname "$0")/.." && pwd)"
@@ -16,7 +16,8 @@ if [ "${1:-}" = "--list" ]; then list_styles; exit 0; fi
 USAGE="usage: new_video.sh <style> <short-name> [--dir <parent>]   (runnable styles: $(list_styles | tr '\n' ' '))"
 STYLE="${1:?$USAGE}"; NAME="${2:?$USAGE}"; shift 2
 DEFAULT_ROOT="$(cd "$SKILL/../../.." && pwd)"
-PARENT="${PIPELINE_ROOT:-$DEFAULT_ROOT}"
+PIPELINE_ROOT="${PIPELINE_ROOT:-$DEFAULT_ROOT}"
+PARENT="${PIPELINE_PROJECTS_DIR:-$PIPELINE_ROOT/projects}"
 while [ $# -gt 0 ]; do case "$1" in --dir) PARENT="${2:?}"; shift 2 ;; *) echo "unknown option $1" >&2; exit 2 ;; esac; done
 SRC="$SKILL/styles/$STYLE/example"
 [ -f "$SRC/index.html" ] && [ -f "$SRC/src/main.js" ] && [ -f "$SRC/tools/capture.mjs" ] || { echo "style '$STYLE' has no runnable frame-capture scaffold ($USAGE)" >&2; exit 2; }

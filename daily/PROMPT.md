@@ -4,7 +4,7 @@ You are running unattended. Do not ask questions or wait for approval. Use the e
 
 ## 1. Protect existing work
 
-- Work only inside the repository root supplied in PIPELINE_ROOT; the current run folder is daily/.
+- Read pipeline configuration and history from the repository root in PIPELINE_ROOT. Create or edit generated episode projects only under PIPELINE_PROJECTS_DIR (default: `<repository>/projects/`). The current run folder is daily/.
 - Read daily/topics-done.md and inspect the queue before starting a new concept. Do not repeat a topic or overwrite an existing project. Resume a valid unfinished project when possible.
 - Never write credentials, account IDs, or OAuth data into source files. If daily/private.local.md is injected, use it only to select the correct user-authorized upload connection.
 - DRY_RUN=1 means create and review a candidate but do not upload or stage it for automatic broadcast.
@@ -40,7 +40,7 @@ Reuse suitable clean assets; archive only useful modular assets after review. Re
 
 ## 4. Build and review
 
-Create a project with the selected runnable style using new_video.sh; write script.json, the production board, and episode-specific src/shots.js. Preserve the renderer's OP.draw and OP.frame APIs. Use the project's timing, voice, caption, and mixer tools. Each cue must map to a real implemented sound. Keep speech natural and clear over restrained music, use selective scene-matched effects, and check the complete mix.
+Create a project with the selected runnable style using new_video.sh; its default output directory is PIPELINE_PROJECTS_DIR. Write script.json, the production board, and episode-specific src/shots.js there. Preserve the renderer's OP.draw and OP.frame APIs. Use the project's timing, voice, caption, and mixer tools. Each cue must map to a real implemented sound. Keep speech natural and clear over restrained music, use selective scene-matched effects, and check the complete mix.
 
 Run the renderer check, cue extraction, sound mix, contact sheet, and final render using commands documented by the selected style. Review the contact sheet and full-size frames from the opening, every major set, the busiest caption/graphic, and the payoff. Fix repeated shots, noisy frames, collisions, unclear actions, timing problems, factual errors, and audio defects before staging.
 

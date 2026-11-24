@@ -27,6 +27,7 @@ from pathlib import Path
 
 SKILL_DIR = Path(__file__).resolve().parent.parent
 ROOT = Path(os.environ.get('PIPELINE_ROOT', Path(__file__).resolve().parents[4]))
+PROJECTS_ROOT = Path(os.environ.get('PIPELINE_PROJECTS_DIR', ROOT / 'projects')).expanduser().resolve()
 PY = SKILL_DIR / 'scripts/py'
 
 
@@ -34,7 +35,7 @@ def audit_production(project_dir):
     """Audits the completion status of all film crafts in a project."""
     P = Path(project_dir)
     if not P.is_dir():
-        cand = ROOT / project_dir
+        cand = PROJECTS_ROOT / project_dir
         if cand.is_dir():
             P = cand
         else:
@@ -71,7 +72,7 @@ def produce_movie(project_dir, video_format="short"):
     """Executes the deterministic movie-level craft production pipeline."""
     P = Path(project_dir)
     if not P.is_dir():
-        cand = ROOT / project_dir
+        cand = PROJECTS_ROOT / project_dir
         if cand.is_dir():
             P = cand
         else:
