@@ -1,0 +1,38 @@
+{
+  "title": "Why Did I Walk In Here?",
+  "voice": "am_michael",
+  "speed": 1.05,
+  "lead": 0.3,
+  "outro": 1.2,
+  "gap": 0.18,
+  "music": "bounce",
+  "sources": [
+    {
+      "title": "Radvansky, Krawietz & Tamplin (2011), Walking through doorways causes forgetting: Further explorations",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21264600/"
+    },
+    {
+      "title": "McFadyen et al. (2021), Event boundaries and memory: Revisiting the doorway effect",
+      "url": "https://discovery.ucl.ac.uk/id/eprint/10123784/1/s40359-021-00536-3.pdf"
+    }
+  ],
+  "lines": [
+    {
+      "text": "Ever walk into a room and forget why you came?",
+      "caps": "Walk into a room | and forget why?"
+    },
+    {
+      "text": "One study found that crossing a doorway can make a remembered intention harder to retrieve.",
+      "caps": "A doorway | can disrupt recall"
+    },
+    {
+      "text": "The idea is that your brain files the new room as a new event, pushing the old goal out of focus.",
+      "caps": "A new scene | shifts your focus"
+    },
+    {
+      "text": "But later research found the effect depends on the situation. So what were you looking for?",
+      "caps": "It depends | on the situation",
+      "gap": 0.3
+    }
+  ]
+}

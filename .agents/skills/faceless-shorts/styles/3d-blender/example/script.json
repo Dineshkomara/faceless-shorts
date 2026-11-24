@@ -1,0 +1,42 @@
+{
+  "title": "బేతాళుడి ప్రశ్న — 3D సినిమా",
+  "style": "3d-blender",
+  "voice": "sarvam:shubh",
+  "lang": "te",
+  "speed": 0.95,
+  "music": "drone_pad",
+  "characters": [
+    {
+      "id": "king",
+      "name": "విక్రమార్క మహారాజు",
+      "role": "Mighty Emperor carrying Betal",
+      "look": {
+        "head": "#E2A772",
+        "body": "#8E1616",
+        "deityOpts": { "crown": "mukut", "tilak": "#D8343F", "jewellery": true }
+      }
+    },
+    {
+      "id": "betal",
+      "name": "బేతాళుడు",
+      "role": "Mystical floating spirit of the charnel ground",
+      "look": {
+        "head": "#4A6B82",
+        "body": "#1A222E",
+        "deityOpts": { "crown": false, "tilak": false }
+      }
+    }
+  ],
+  "shots": [
+    {
+      "text": "అర్థరాత్రి నిశ్శబ్ద శ్మశానంలో... చెట్టుపై వేలాడుతున్న బేతాళుడిని తన భుజాలపై వేసుకున్నాడు విక్రమార్క మహారాజు.",
+      "caps": "శ్మశానంలో విక్రమార్కుడు | *బేతాళుడి చిక్కుముడి",
+      "tags": ["betal", "cemetery", "night"]
+    },
+    {
+      "text": "అప్పుడు బేతాళుడు నవ్వి... 'రాజా, నీ శ్రమ తగ్గించడానికి ఒక వింత కథ చెబుతాను విను!' అన్నాడు.",
+      "caps": "నీ శ్రమ తగ్గించడానికి | *ఒక వింత కథ!",
+      "tags": ["betal"]
+    }
+  ]
+}

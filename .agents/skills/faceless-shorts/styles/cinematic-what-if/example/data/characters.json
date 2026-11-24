@@ -1,0 +1,7 @@
+{
+  "style": "cinematic-what-if",
+  "characters": [
+    { "id": "lead_male", "role": "lead", "head": "#0e0b12", "face": "cream dot eyes and simple mouth; no nose or ears", "garment": { "item": "jacket", "color": "#1e56a0" }, "rim": "#ffc68a", "scale": 1 },
+    { "id": "friend_green", "role": "supporting friend", "head": "#0e0b12", "face": "cream dot eyes and simple mouth; no nose or ears", "garment": { "item": "jacket and cap", "color": "#27ae60" }, "rim": "#ffc68a", "scale": 0.8 }
+  ]
+}

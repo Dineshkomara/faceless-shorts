@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "target-fixation-driving-kit",
+      "description": "Stylized 3D road-scene props and driving set for future attention, steering, crash-avoidance, or hazard concepts. Reuse individual objects, not the old frame composition.",
+      "category": "props-environment",
+      "tags": [
+        "3d-props",
+        "attention",
+        "car",
+        "cockpit",
+        "driver",
+        "road",
+        "tow-truck",
+        "tree",
+        "vehicle"
+      ],
+      "source_project": "benchmark-target-fixation",
+      "source_paths": [
+        "src/core/target_fixation_assets.js",
+        "src/core/world.js",
+        "src/core/toon.js",
+        "src/core/engine.js",
+        "src/core/deity.js"
+      ],
+      "files": [
+        "src/core/target_fixation_assets.js",
+        "src/core/world.js",
+        "src/core/toon.js",
+        "src/core/engine.js",
+        "src/core/deity.js"
+      ],
+      "checksums": {
+        "src/core/target_fixation_assets.js": "dea2d2538f5566f6c7bd3922e8e5e5c617bfcf8aa4377f6c12b8948143b03ac3",
+        "src/core/world.js": "b541b94182a6781fc1ef294a91f04bee0ef19ec42106dbae60eb49d25b7c2481",
+        "src/core/toon.js": "0fad3a7a2ee7902379e7f7bec02eaae549da7ded220f96407bfb354a000ca362",
+        "src/core/engine.js": "dbbb1cc6a5011dbfe740ff1e96b292e60c414dbf45f8dd07a63b38635d469795",
+        "src/core/deity.js": "5b03731b231e3a7e71bfe4464207c9d42ff21ced3285cc3b522e06d89a380f7c"
+      },
+      "sizes": {
+        "src/core/target_fixation_assets.js": 25959,
+        "src/core/world.js": 31810,
+        "src/core/toon.js": 34070,
+        "src/core/engine.js": 5332,
+        "src/core/deity.js": 26979
+      },
+      "preview": null,
+      "integration_notes": "The target asset module depends on world.js and toon.js; these reference engine.js and deity.js. All are bundled preserving src/core paths. Existing shared modules must match the stored checksums before use. Reuse a car/tree/road/cockpit prop only when relevant; remove the old HUD banners, sparkle particles, repetitive hero framing, and caption treatment.",
+      "created_at": "2026-11-24T10:01:12+00:00"
+    }
+  ]
+}

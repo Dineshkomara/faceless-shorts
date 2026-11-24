@@ -1,0 +1,31 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Deity audit</title>
+<style>
+@font-face { font-family: 'Inter'; font-weight: 900; src: url('fonts/Inter-Black.otf'); }
+body { margin: 0; background: #F3EEE2; }
+canvas { display: block; }
+</style></head>
+<body><canvas id="cv" width="1860" height="880"></canvas>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}</script>
+<script type="module">
+import { drawToon, PROPS } from './src/core/toon.js';
+import { DEITIES, deityLook } from './src/core/deity.js';
+
+const cv = document.getElementById('cv'), g = cv.getContext('2d');
+g.fillStyle = '#F3EEE2'; g.fillRect(0, 0, cv.width, cv.height);
+const names = Object.keys(DEITIES).filter((n) => n !== 'rakshasa');
+const HOLD = { shiva: { holdR: PROPS.trishul, holdL: PROPS.damaru }, hanuman: { holdR: PROPS.gada },
+  krishna: { holdR: PROPS.flute }, lakshmi: { holdL: PROPS.lotus }, murugan: { holdR: PROPS.vel },
+  rama: { holdL: PROPS.bow } };
+const CW = 1860 / 6, CH = 420;
+names.forEach((n, i) => {
+  const col = i % 6, row = Math.floor(i / 6);
+  const x = col * CW, y = row * CH;
+  g.save(); g.translate(x + 6, y + 4); g.scale(0.33, 0.33);
+  drawToon(g, deityLook(n), { mood: 'happy', armL: [24, 8], armR: [34, 14], legs: 'stand', ...(HOLD[n] || {}) });
+  g.restore();
+  g.fillStyle = '#1F1C33'; g.font = '900 22px Inter'; g.textAlign = 'center';
+  g.fillText(n, x + CW / 2, y + CH - 16);
+});
+window.__ready = true;
+</script></body></html>

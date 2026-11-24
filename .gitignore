@@ -1,0 +1,61 @@
+# Local credentials and configuration
+.env
+.env.*
+!.env.example
+**/*token*.json
+**/*client_secret*.json
+**/client_secret*.json
+**/credentials.json
+**/secrets.json
+
+# Local run state, caches, logs, and model state
+.DS_Store
+.codex_write_probe
+.mpt_cache/
+mpt-env/
+MoneyPrinterTurbo/
+daily/logs/
+daily/feedback/
+daily/.model
+daily/.model-candidates
+daily/.run.lock
+daily/topics-done.md
+daily/topics-done.md.bak
+daily/daily-*.json
+dashboard/server.log
+dashboard/perf.json
+review/*.jpg
+
+# Generated episodes and output media
+/daily-[0-9]*/
+/samples/
+/brain-replay/
+/benchmark-target-fixation/
+/vikram-betal-riddle/
+/mpt_demo_assets/
+**/renders/
+**/covers/
+**/review/frames/
+**/review/all.jpg
+**/data/narration.wav
+**/data/mix.wav
+**/data/words.json
+**/data/words.txt
+
+# Keep only the faceless-shorts integration; ignore user-installed skills.
+/.agents/skills/*
+!/.agents/skills/faceless-shorts/
+
+# Python/editor noise
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.idea/
+.vscode/
+
+# Historical style experiments are available in the working copy but too large and unstable to ship.
+/.agents/skills/faceless-shorts/styles/archive/
+/.agents/skills/faceless-shorts/scripts/__pycache__/
+/asset-library/items/
+daily/private.local.md

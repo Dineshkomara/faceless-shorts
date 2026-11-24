@@ -1,0 +1,18 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Cinematic What If</title>
+<style>
+@font-face { font-family: 'Fredoka'; font-style: normal; font-weight: 300 700; src: url('fonts/Fredoka-Variable.ttf'); }
+@font-face { font-family: 'Nunito'; font-style: normal; font-weight: 200 1000; src: url('fonts/Nunito-Variable.ttf'); }
+@font-face { font-family: 'Playfair Display'; font-style: italic; font-weight: 400 900; src: url('fonts/PlayfairDisplay-Italic-Variable.ttf'); }
+html, body { margin: 0; background: #111; height: 100%; } body { display: flex; align-items: center; justify-content: center; }
+#cv { display: block; height: 100vh; width: auto; } body.capture #cv { height: auto; } #gl { display: none; }
+#play { position: fixed; font: 800 28px Nunito, sans-serif; padding: 18px 36px; border: 0; border-radius: 40px; background: #e3ad6c; cursor: pointer; }
+
+/* Indic script fallbacks (Hindi/Telugu runs): same family, picked per unicode range */
+</style></head>
+<body>
+<canvas id="cv" width="1080" height="1920"></canvas><canvas id="gl" width="1080" height="1920"></canvas>
+<button id="play" hidden>▶ PLAY</button>
+<script>if (location.search.includes('capture')) document.body.className = 'capture';</script>
+<script type="module" src="src/main.js"></script>
+</body></html>
